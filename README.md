@@ -33,6 +33,7 @@ quality|png,jpeg转webp的质量,在0到100范围内,推荐80
 port|go web程序开放端口
 max_cache_size|本地`./i`缓存总大小限制,以MB为单位
 free_cache_size|本地总大小超过max_cache_size后一次性删除后保留的大小,以MB为单位
+
 启动脚本
 ### 后续开发计划
 制作前端,优化删除缓存的代码
