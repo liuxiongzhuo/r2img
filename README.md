@@ -4,8 +4,8 @@
 ### 功能
 后端api验证,png,jpg转webp,控制服务器本地存储总大小
 ### 使用方法
-/upload formdata file字段存放图片 响应返回文件名
-/i/:fileName 图片外链
+- /upload formdata file字段存放图片 响应返回文件名
+- /i/:fileName 图片外链
 ### 优势
 - 图片在r2有备份,不会丢失.
 - 采用服务器本地临时存储,减少r2的请求次数
