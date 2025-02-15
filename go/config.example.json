@@ -1,0 +1,10 @@
+{
+    "api_site":"https://backend.com",
+    "api_key":"__your_backend_api__",
+    "auth_key":"__the_frontend_api__",
+    "max_file_size":10,
+    "quality":80,
+    "port":8080,
+    "max_cache_size":100,
+    "free_cache_size":50
+}
