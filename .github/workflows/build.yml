@@ -1,0 +1,40 @@
+name: Go Multi-Platform Build (Manual)
+
+on:
+  workflow_dispatch:  # 仅允许手动触发
+    inputs:  # 可选：定义手动触发时的输入参数
+      go_version:
+        description: 'Go version to use'
+        required: false
+        default: '1.20'  # 如果不提供，默认使用 1.20
+      # 可以添加更多输入参数，例如要构建的特定目标平台
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        # go-version: [1.18, 1.19, 1.20]  # 移除硬编码的 Go 版本，改用输入参数
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: ${{ github.event.inputs.go_version || '1.20' }} # 使用输入的 go_version，如果没有提供则使用默认值
+
+    - name: Build
+      run: |
+        go build -v -o r2img_${{ matrix.os }}_${{ github.event.inputs.go_version || '1.20' }}
+      env:
+        GOOS: ${{ runner.os }}
+
+    - name: Upload artifacts (optional)
+      uses: actions/upload-artifact@v3
+      with:
+        name: r2img-${{ matrix.os }}-${{ github.event.inputs.go_version || '1.20' }}
+        path: r2img_${{ matrix.os }}_${{ github.event.inputs.go_version || '1.20' }}
