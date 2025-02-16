@@ -26,9 +26,9 @@ jobs:
         working-directory: go
         run: |
           mkdir -p ../build
-          GOOS=linux GOARCH=amd64 go build -o ../build/app-linux-amd64 main.go ./go/cmd
-          GOOS=windows GOARCH=amd64 go build -o ../build/app-windows-amd64.exe main.go ./go/cmd
-          GOOS=darwin GOARCH=amd64 go build -o ../build/app-macos-amd64 main.go ./go/cmd
+          GOOS=linux GOARCH=amd64 go build -o ../build/app-linux-amd64 
+          GOOS=windows GOARCH=amd64 go build -o ../build/app-windows-amd64.exe ./cmd/main.go
+          GOOS=darwin GOARCH=amd64 go build -o ../build/app-macos-amd64 ./cmd/main.go
 
       - name: Upload binaries
         uses: actions/upload-artifact@v4
