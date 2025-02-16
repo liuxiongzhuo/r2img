@@ -20,21 +20,21 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Set up Go
-      uses: actions/setup-go@v3
+      uses: actions/setup-go@v4
       with:
         go-version: ${{ github.event.inputs.go_version || '1.20' }} # 使用输入的 go_version，如果没有提供则使用默认值
 
     - name: Build
       run: |
-        go build -v -o r2img_${{ matrix.os }}_${{ github.event.inputs.go_version || '1.20' }}
+        go build -v -o r2img_${{ matrix.os }}_${{ github.event.inputs.go_version || '1.20' }} go/cmd/main.go
       env:
         GOOS: ${{ runner.os }}
 
     - name: Upload artifacts (optional)
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: r2img-${{ matrix.os }}-${{ github.event.inputs.go_version || '1.20' }}
         path: r2img_${{ matrix.os }}_${{ github.event.inputs.go_version || '1.20' }}
