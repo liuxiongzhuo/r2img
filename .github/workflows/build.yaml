@@ -21,6 +21,7 @@ jobs:
       run: |
         echo "GOOS: $GOOS"
         echo "GOARCH: $GOARCH"
+        go env
         env
     - name: Checkout code
       uses: actions/checkout@v4
