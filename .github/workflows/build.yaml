@@ -27,6 +27,11 @@ jobs:
       with:
         go-version: ${{ github.event.inputs.go_version || '1.20' }} # 使用输入的 go_version，如果没有提供则使用默认值
 
+    - name: Print Environment Variables
+      run: |
+        echo "GOOS: $GOOS"
+        echo "GOARCH: $GOARCH"
+        env  # 打印所有环境变量
     - name: Build
       run: |
         go build -v -o r2img_${{ matrix.os }}_${{ github.event.inputs.go_version || '1.20' }} go/cmd/main.go
