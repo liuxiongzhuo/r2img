@@ -38,3 +38,4 @@ jobs:
         with:
           name: compiled-binaries
           path: build/*
+          compression-level: 0  # 禁用压缩
